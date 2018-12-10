@@ -7,20 +7,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  recipesDisabled: boolean; // = false;
-  shoppingListDisabled: boolean; // = true;
+  // recipesDisabled: boolean; // = false;
+  // shoppingListDisabled: boolean; // = true;
 
-  recipeSelected(event) {
-    this.recipesDisabled = !event;
-    this.shoppingListDisabled = event;
-    console.log(this.recipesDisabled);
-    console.log(this.shoppingListDisabled);
+  loadedFeature = 'recipe';
+
+  onNavigate(feature: string) {
+    this.loadedFeature = feature;
   }
 
-  shoppingListSelected(event) {
-    this.recipesDisabled = event;
-    this.shoppingListDisabled = !event;
-    console.log(this.recipesDisabled);
-    console.log(this.shoppingListDisabled);
-  }
+  /*
+    recipeSelected(event) {
+      this.recipesDisabled = !event;
+      this.shoppingListDisabled = event;
+      console.log(this.recipesDisabled);
+      console.log(this.shoppingListDisabled);
+    }
+
+    shoppingListSelected(event) {
+      this.recipesDisabled = event;
+      this.shoppingListDisabled = !event;
+      console.log(this.recipesDisabled);
+      console.log(this.shoppingListDisabled);
+    }
+  */
 }

@@ -7,23 +7,31 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() recipeSelected = new EventEmitter <boolean>();
-  @Output() shoppingListSelected = new EventEmitter <boolean>();
+  // @Output() recipeSelected = new EventEmitter<boolean>();
+  // @Output() shoppingListSelected = new EventEmitter<boolean>();
+
+  @Output() featureSelected = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  recipesClickFn() {
-    // console.log(true);
-    this.recipeSelected.emit(true);
-    // this.shoppingListSelected.emit(false);
-  }
+  /*
+    recipesClickFn() {
+      // console.log(true);
+      this.recipeSelected.emit(true);
+      // this.shoppingListSelected.emit(false);
+    }
 
-  shoppingListClickFn() {
-    // console.log(true);
-    // this.recipeSelected.emit(false);
-    this.shoppingListSelected.emit(true);
+    shoppingListClickFn() {
+      // console.log(true);
+      // this.recipeSelected.emit(false);
+      this.shoppingListSelected.emit(true);
+    }
+  */
+
+  onSelect(feature: string) {
+    this.featureSelected.emit(feature);
   }
 }
