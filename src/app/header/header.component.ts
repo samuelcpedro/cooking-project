@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() recipeSelected = new EventEmitter <boolean>();
+  @Output() shoppingListSelected = new EventEmitter <boolean>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  recipesClickFn() {
+    // console.log(true);
+    this.recipeSelected.emit(true);
+    // this.shoppingListSelected.emit(false);
+  }
+
+  shoppingListClickFn() {
+    // console.log(true);
+    // this.recipeSelected.emit(false);
+    this.shoppingListSelected.emit(true);
+  }
 }

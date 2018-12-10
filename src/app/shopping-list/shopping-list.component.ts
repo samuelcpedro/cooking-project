@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 
 @Component({
@@ -8,6 +8,9 @@ import { Ingredient } from '../shared/ingredient.model';
 })
 export class ShoppingListComponent implements OnInit {
 
+
+  @Input() shoppingListDisabledPrp;
+
   ingredients: Ingredient[] = [
     new Ingredient('Apples', 5),
     new Ingredient('Tomatos', 10),
@@ -16,6 +19,7 @@ export class ShoppingListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.shoppingListDisabledPrp = true;
   }
 
 }
