@@ -7,14 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RecipesComponent implements OnInit {
 
-  @Input() recipesDisabledPrp;
+  constructor() {  }
 
-  constructor() {
-
-  }
-
-  ngOnInit() {
-    this.recipesDisabledPrp = false;
-  }
+  ngOnInit() {  }
 
 }

@@ -9,7 +9,6 @@ import { Ingredient } from '../shared/ingredient.model';
 export class ShoppingListComponent implements OnInit {
 
 
-  @Input() shoppingListDisabledPrp;
 
   ingredients: Ingredient[] = [
     new Ingredient('Apples', 5),
@@ -19,7 +18,6 @@ export class ShoppingListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.shoppingListDisabledPrp = true;
   }
 
 }

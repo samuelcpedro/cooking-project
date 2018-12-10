@@ -11,20 +11,20 @@ export class RecipeListComponent implements OnInit {
   public recipes: Recipe[] = [
     // tslint:disable-next-line:max-line-length
     new Recipe('A Test Recipe',
-    'This is simply a test',
-    'https://www.maxpixel.net/static/photo/1x/Meat-Power-Recipe-Food-Dishes-Pork-1459693.jpg'),
-    new Recipe('A Test Recipe',
-     'This is simply a test',
-     'https://www.maxpixel.net/static/photo/1x/Meat-Power-Recipe-Food-Dishes-Pork-1459693.jpg'),
-     new Recipe('A Test Recipe',
       'This is simply a test',
       'https://www.maxpixel.net/static/photo/1x/Meat-Power-Recipe-Food-Dishes-Pork-1459693.jpg'),
-      new Recipe('A Test Recipe',
-       'This is simply a test',
-       'https://www.maxpixel.net/static/photo/1x/Meat-Power-Recipe-Food-Dishes-Pork-1459693.jpg'),
-       new Recipe('A Test Recipe',
-        'This is simply a test',
-        'https://www.maxpixel.net/static/photo/1x/Meat-Power-Recipe-Food-Dishes-Pork-1459693.jpg'),
+    new Recipe('A Test Recipe',
+      'This is simply a test',
+      'https://www.maxpixel.net/static/photo/1x/Meat-Power-Recipe-Food-Dishes-Pork-1459693.jpg'),
+    new Recipe('A Test Recipe',
+      'This is simply a test',
+      'https://www.maxpixel.net/static/photo/1x/Meat-Power-Recipe-Food-Dishes-Pork-1459693.jpg'),
+    new Recipe('A Test Recipe',
+      'This is simply a test',
+      'https://www.maxpixel.net/static/photo/1x/Meat-Power-Recipe-Food-Dishes-Pork-1459693.jpg'),
+    new Recipe('A Test Recipe',
+      'This is simply a test',
+      'https://www.maxpixel.net/static/photo/1x/Meat-Power-Recipe-Food-Dishes-Pork-1459693.jpg'),
   ];
 
   constructor() { }
