@@ -7,21 +7,33 @@ import { Ingredient } from '../../shared/ingredient.model';
   styleUrls: ['./shopping-list-edit.component.css']
 })
 export class ShoppingListEditComponent implements OnInit {
-  @ViewChild('nameInput') inputName: ElementRef;
-  @ViewChild('amountInput') inputAmount: ElementRef;
 
-  @Output() addedIngredient = new EventEmitter<Ingredient>();
+  // nameInput -> name of the local reference
+  @ViewChild('nameInput') nameInputRef: ElementRef;
+  @ViewChild('amountInput') amountInputRef: ElementRef;
+
+  // {name: string, amount: number} --> type definiton not a value
+  // @Output() ingredientAdded = new EventEmitter<{name: string, amount: number}>();
+  @Output() ingredientAdded = new EventEmitter<Ingredient>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  addIngredient() {
-    this.addedIngredient.emit({
-      name: this.inputName.nativeElement.value,
-      amount: this.inputAmount.nativeElement.value
-    });
+  onAddItem() {
+
+    const ingName = this.nameInputRef.nativeElement.value;
+    const ingAmount = this.amountInputRef.nativeElement.value;
+
+    const newIngredient = new Ingredient(ingName, ingAmount);
+
+    this.ingredientAdded.emit(newIngredient);
+
+    // this.ingredientAdded.emit({
+    //   name: this.nameInputRef.nativeElement.value,
+    //   amount: this.amountInputRef.nativeElement.value
+    // });
   }
 
 }
