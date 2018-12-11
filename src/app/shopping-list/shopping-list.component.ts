@@ -20,4 +20,10 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit() {
   }
 
+  addIngredient(event) {
+    console.log(event);
+    this.ingredients.push(event);
+    console.log(JSON.stringify(this.ingredients, null, 4));
+  }
+
 }
