@@ -10,15 +10,8 @@ export class RecipeDetailComponent implements OnInit {
 
   @Input() recipe: Recipe;
 
-  // to toggle menu
-  isOpen = true;
-
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onToggleDropdow() {
-    this.isOpen = !this.isOpen;
   }
 }

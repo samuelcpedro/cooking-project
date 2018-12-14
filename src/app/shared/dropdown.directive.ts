@@ -1,15 +1,19 @@
-import { Directive, ElementRef, Renderer2, OnInit, Input } from '@angular/core';
+import { Directive, HostListener, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: '[appIsDropdownOpen]' // atribute selector
+  selector: '[appDropdown]' // atribute selector
 })
 export class DropdownDirective {
 
-  constructor(private elRef: ElementRef, private renderer: Renderer2) { }
+  // Using @HostBinding and @HostListener in Custom Angular Directives
+  // https://alligator.io/angular/hostbinding-hostlistener/
 
-  @Input() set appIsDropdownOpen(isOpen: boolean) {
-    isOpen
-      ? this.renderer.removeClass(this.elRef.nativeElement, 'open')
-      : this.renderer.addClass(this.elRef.nativeElement, 'open');
+  // @HostBinding lets you set properties on the element or component that hosts the directive
+  @HostBinding('class.open') isOpen = false;
+
+  // @HostListener lets you listen for events on the host element or component
+  @HostListener('click') toggleOpen() {
+    this.isOpen = !this.isOpen;
   }
+
 }
