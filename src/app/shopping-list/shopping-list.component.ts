@@ -1,4 +1,3 @@
-import { Ingredient } from './../shared/ingredient.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 
