@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <button class="btn btn-success" [routerLink]="['new']"
-    routerLinkActive="router-link-active">New Recipe</button>
+    <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
   </div>
 </div>
 <hr>
@@ -14,3 +13,53 @@
     ></app-recipe-item>
   </div>
 </div>
+
+<!-- 
+  [routerLink] vs routerLink ?
+  I am confused as to where to use [routerLink] and where to used routerlink.
+  
+  Hi!
+
+  Actually there is nothing syntactically specific to routerLink; 
+  it's just the normal Angular syntax:
+
+    ● Without using squared brackets Angular tries to interpret the content between the quotation marks directly as a string.
+
+    ● With using squared brackets Angular tries to evaluate the content between the quotation marks to a string.
+
+  Written in pseudo code the general difference of these two notations could be illustrated like this:
+
+  Interpret as string: name="Max"
+
+  Evaluate to string: [name]="callTheNameOnTheDoorbellLabel()"
+
+  Evaluate to string: [name]="'M' + 'a' + 'x'"
+
+  Evaluate to string: [name]="'Max'" (not very useful, but possible)
+
+  BTW:
+
+  Here is an example from recipe-detail.component.html (section 12), where you could add this bunch of links:
+
+    <li><a routerLink="edit/">Edit Recipe</a></li>
+    <li><a [routerLink]="'edit'">Edit Recipe</a></li>
+    <li><a [routerLink]="['edit']">Edit Recipe</a></li>
+    <li><a routerLink="./edit">Edit Recipe</a></li>
+    <li><a [routerLink]="'./edit'">Edit Recipe</a></li>
+    <li><a [routerLink]="['./edit']">Edit Recipe</a></li>
+    <li><a routerLink="/recipes/0/edit">Edit Recipe</a></li>
+    <li><a [routerLink]="'/recipes/0/edit'">Edit Recipe</a></li>
+    <li><a [routerLink]="['/recipes/0/edit']">Edit Recipe</a></li>
+    <li><a [routerLink]="['/recipes', '0', 'edit']">Edit Recipe</a></li>
+    <li><a routerLink="edit/">Edit Recipe</a></li>
+    <li><a [routerLink]="'edit/'">Edit Recipe</a></li>
+    <li><a [routerLink]="['edit/']">Edit Recipe</a></li>
+    <li><a routerLink="./edit/">Edit Recipe</a></li>
+    <li><a [routerLink]="'./edit/'">Edit Recipe</a></li>
+    <li><a [routerLink]="['./edit/']">Edit Recipe</a></li>
+    <li><a routerLink="/recipes/0/edit">Edit Recipe</a></li>
+    <li><a [routerLink]="'/recipes/0/edit/'">Edit Recipe</a></li>
+    <li><a [routerLink]="['/recipes/0/edit/']">Edit Recipe</a></li>
+  If you hover over them in the viewport you will see in the bottom left corner that they are all pointing to the same place (assumed that you are currently on the recipes/0 route).
+ 
+-->
