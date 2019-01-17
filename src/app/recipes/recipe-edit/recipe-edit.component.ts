@@ -26,6 +26,10 @@ export class RecipeEditComponent implements OnInit {
     );
   }
 
+  onSubmit() {
+    console.log(this.recipeForm);
+  }
+
   /**
    * We should call this method whenever our route Params change
    * because that indicates that we reloaded the page.
