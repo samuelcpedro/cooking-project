@@ -38,6 +38,6 @@ id: number;
 
   onDeleteRecipe() {
     this.recipeService.deleteRecipe(this.id);
-    // this.router.navigate(['delete'], { relativeTo: this.route });
+    this.router.navigate(['/recipes']);
   }
 }
