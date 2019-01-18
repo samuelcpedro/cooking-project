@@ -1,8 +1,7 @@
-import { Ingredient } from './../../shared/ingredient.model';
-import { Recipe } from './../recipe.model';
-import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -15,7 +14,7 @@ export class RecipeEditComponent implements OnInit {
   editMode = false;
   recipeForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -45,6 +44,7 @@ export class RecipeEditComponent implements OnInit {
     } else {
       this.recipeService.addRecipe(this.recipeForm.value);
     }
+    this.onCancel();
   }
 
   /**
@@ -100,7 +100,26 @@ export class RecipeEditComponent implements OnInit {
       }));
   }
 
+  /**
+   * It will go back one step to the relative route
+   * ex.
+   *   recipe/0/edit  -> recipe/0
+   *   recipe/0       -> recipe
+   */
+  onCancel() {
+    this.router.navigate(['../'], { relativeTo: this.route });
+  }
+
   getControls() {
+    // return this.getFormItem<FormArray>('recipeForm.igredients').controls;
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
+  }
+
+
+  getFormItem<T extends FormControl | FormArray | FormGroup>(path: string): T {
+    const parts = path.split('.');
+    const source = this[parts.shift()];
+
+    return parts.reduce((currentControl, controlName) => currentControl.get(controlName), source);
   }
 }
