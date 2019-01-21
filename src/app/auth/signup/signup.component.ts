@@ -21,6 +21,5 @@ export class SignupComponent implements OnInit {
     console.log(form);
 
     this.authService.signupUser(email, password);
-
   }
 }
