@@ -1,0 +1,5 @@
+Use getIdToken() instead of getToken()
+Section 20, Lecture 261
+Important note: If you're using Firebase 5.x or higher (you can check the package.json  file to find out), you should use getIdToken()  for obtaining the token, NOT getToken()  as shown in the next lectures.
+
+Also important: When I show you where to find the token in the browser, you'll NOT find it in localStorage anymore, instead, it'll now be stored in IndexedDB. That's the only thing that differs - the token usage will stay the same.
