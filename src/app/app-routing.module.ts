@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.component';
@@ -11,14 +13,13 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   { path: 'recipes', component: RecipesComponent, children: [
     { path: '', component: RecipesStartComponent },
-    // it was necessary to change of this 2 routes
-    // to valuate the the word new and then other value
     { path: 'new', component: RecipeEditComponent },
     { path: ':id', component: RecipeDetailComponent },
-    // **********************************************
     { path: ':id/edit', component: RecipeEditComponent },
   ]},
   { path: 'shopping-list', component: ShoppingListComponent, },
+  { path: 'signup', component: SignupComponent, },
+  { path: 'signin', component: SigninComponent, },
 ];
 
 @NgModule({
