@@ -53,6 +53,17 @@ export class RecipeService {
   constructor(private slService: ShoppingListService, private http: Http) { }
 
   /**
+   * Get new recipes from the server
+   *
+   * @param {Recipe[]} recipes
+   * @memberof RecipeService
+   */
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  /**
    * Return a copy of the array
    *
    * @returns
@@ -95,17 +106,6 @@ export class RecipeService {
   }
 
   /**
-   * Adds the elements of a Array of Recipes
-   *
-   * @param {Recipe[]} recipes
-   * @memberof RecipeService
-   */
-  addRecipes(recipes: Recipe[] = []) {
-    this.recipes.push(...recipes);
-    this.recipesChanged.next(this.recipes.slice());
-  }
-
-  /**
    *
    *
    * @param {number} index
@@ -126,10 +126,6 @@ export class RecipeService {
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
     this.recipesChanged.next(this.recipes.slice());
-  }
-
-  resetRecipes() {
-    this.recipes = [];
   }
 
 }

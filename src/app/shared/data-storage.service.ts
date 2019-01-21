@@ -12,16 +12,13 @@ export class DataStorageService {
     return this.http.put('https://ng-recipe-book-samu.firebaseio.com/recipes.json', this.recipeService.getRecipes());
   }
 
-  fetchRecipes() {
+  getRecipes() {
     return this.http.get('https://ng-recipe-book-samu.firebaseio.com/recipes.json')
       .subscribe(
         (response: Response) => {
-          console.log(response);
-          const value = response.json();
-          // discard all present recipes
-          this.recipeService.resetRecipes();
+          const recipes: Recipe[] = response.json();
           // add new ones
-          this.recipeService.addRecipes(<any>value);
+          this.recipeService.setRecipes(recipes);
         },
         (error: any) => { console.log(error); }
       );
