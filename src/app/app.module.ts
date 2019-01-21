@@ -21,10 +21,6 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
