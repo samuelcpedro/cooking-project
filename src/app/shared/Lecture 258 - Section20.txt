@@ -1,0 +1,5 @@
+More about JWT
+Section 20, Lecture 258
+Want to learn about the Token which is exchanged? 
+
+The following page should be helpful: https://jwt.io/ - specifically, the introduction: https://jwt.io/introduction/
