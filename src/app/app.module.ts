@@ -5,6 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthService } from './auth/auth.service';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { HeaderComponent } from './header/header.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
@@ -18,8 +21,6 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/shopping-list-edit.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { SigninComponent } from './auth/signin/signin.component';
     AppRoutingModule,
     HttpModule,
   ],
-  providers: [ShoppingListService, RecipeService, DataStorageService],
+  providers: [ShoppingListService, RecipeService, DataStorageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

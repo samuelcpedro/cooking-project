@@ -9,8 +9,6 @@ import * as data from './../assets/key.json';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  // recipesDisabled: boolean; // = false;
-  // shoppingListDisabled: boolean; // = true;
 
   loadedFeature = 'recipe';
 
@@ -19,9 +17,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    const apiK: string = data['apiKey'];
+    const authD: string = data['authDomain'];
+
     firebase.initializeApp({
-      apiKey: data['apiKey'],
-      authDomain: data['authDomain'],
+      apiKey: apiK,
+      authDomain: authD,
     });
   }
 }
