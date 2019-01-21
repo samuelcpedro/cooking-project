@@ -52,32 +52,84 @@ export class RecipeService {
 
   constructor(private slService: ShoppingListService, private http: Http) { }
 
+  /**
+   * Return a copy of the array
+   *
+   * @returns
+   * @memberof RecipeService
+   */
   getRecipes() {
-    // return a copy of the array
     return this.recipes.slice();
   }
 
+  /**
+   *
+   *
+   * @param {number} index
+   * @returns {Recipe}
+   * @memberof RecipeService
+   */
   getRecipe(index: number): Recipe {
     return this.recipes[index];
   }
 
+  /**
+   *
+   *
+   * @param {Ingredient[]} ingredients
+   * @memberof RecipeService
+   */
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.slService.addIngredients(ingredients);
   }
 
+  /**
+   *
+   *
+   * @param {Recipe} recipe
+   * @memberof RecipeService
+   */
   addRecipe(recipe: Recipe) {
     this.recipes.push(recipe);
     this.recipesChanged.next(this.recipes.slice());
   }
 
+  /**
+   * Adds the elements of a Array of Recipes
+   *
+   * @param {Recipe[]} recipes
+   * @memberof RecipeService
+   */
+  addRecipes(recipes: Recipe[] = []) {
+    this.recipes.push(...recipes);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  /**
+   *
+   *
+   * @param {number} index
+   * @param {Recipe} newRecipe
+   * @memberof RecipeService
+   */
   updateRecipe(index: number, newRecipe: Recipe) {
     this.recipes[index] = newRecipe;
     this.recipesChanged.next(this.recipes.slice());
   }
 
+  /**
+   *
+   *
+   * @param {number} index
+   * @memberof RecipeService
+   */
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
     this.recipesChanged.next(this.recipes.slice());
+  }
+
+  resetRecipes() {
+    this.recipes = [];
   }
 
 }
