@@ -4,6 +4,9 @@ import { Ingredient } from './../shared/ingredient.model';
 import { Recipe } from './recipe.model';
 import { Subject } from 'rxjs/Subject';
 
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+
 @Injectable()
 export class RecipeService {
 
@@ -48,7 +51,7 @@ export class RecipeService {
       ]),
   ];
 
-  constructor(private slService: ShoppingListService) { }
+  constructor(private slService: ShoppingListService, private http: Http) { }
 
   getRecipes() {
     // return a copy of the array
@@ -76,6 +79,10 @@ export class RecipeService {
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
     this.recipesChanged.next(this.recipes.slice());
+  }
+
+  saveRecipes(): Observable<any> {
+    return this.http.put('https://ng-recipe-book-samu.firebaseio.com/ng-recipe-book-samu.json', this.recipes);
   }
 
 }

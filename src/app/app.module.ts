@@ -16,6 +16,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/shopping-list-edit.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { HttpModule } from '@angular/http';
 
 
 
@@ -39,6 +40,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    HttpModule,
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]

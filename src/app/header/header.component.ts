@@ -1,3 +1,4 @@
+import { RecipeService } from './../recipes/recipe.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,4 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+  constructor(private recipeService: RecipeService) { }
+
+  onSave() {
+    this.recipeService.saveRecipes()
+      .subscribe(
+        (response: Response) => { console.log(response.json()); },
+        (error) => { console.log(error); }
+      );
+  }
 }
