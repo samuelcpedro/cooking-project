@@ -1,11 +1,10 @@
-import { ShoppingListService } from './../shopping-list/shopping-list.service';
 import { Injectable } from '@angular/core';
-import { Ingredient } from './../shared/ingredient.model';
-import { Recipe } from './recipe.model';
+import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Ingredient } from './../shared/ingredient.model';
+import { ShoppingListService } from './../shopping-list/shopping-list.service';
+import { Recipe } from './recipe.model';
 
 @Injectable()
 export class RecipeService {
@@ -79,10 +78,6 @@ export class RecipeService {
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
     this.recipesChanged.next(this.recipes.slice());
-  }
-
-  saveRecipes(): Observable<any> {
-    return this.http.put('https://ng-recipe-book-samu.firebaseio.com/ng-recipe-book-samu.json', this.recipes);
   }
 
 }
