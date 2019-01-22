@@ -2,7 +2,7 @@ import 'rxjs/Rx';
 
 import { Component } from '@angular/core';
 
-import { RecipeService } from './../recipes/recipe.service';
+import { AuthService } from './../auth/auth.service';
 import { DataStorageService } from './../shared/data-storage.service';
 
 @Component({
@@ -12,7 +12,8 @@ import { DataStorageService } from './../shared/data-storage.service';
 })
 export class HeaderComponent {
 
-  constructor(private dataStorageService: DataStorageService, private recipeService: RecipeService) { }
+  constructor(private dataStorageService: DataStorageService,
+    private authService: AuthService) { }
 
   onSaveData() {
     this.dataStorageService.storeRecipes()
