@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+
 // import 'firebase/auth';
 
 @Injectable()
@@ -28,6 +29,11 @@ export class AuthService {
         (token: string) => this.token = token
       );
     return this.token;
+  }
+
+  logout() {
+    firebase.auth().signOut();
+    this.token = null;
   }
 
   isAuthenticated() {
