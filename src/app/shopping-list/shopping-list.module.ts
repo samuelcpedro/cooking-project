@@ -14,5 +14,9 @@ import { ShoppingListComponent } from './shopping-list.component';
     CommonModule,
     FormsModule,
   ],
+  // we should not do this
+  // exports: [
+  //   FormsModule,
+  // ],
 })
 export class ShoppingListModule { }
