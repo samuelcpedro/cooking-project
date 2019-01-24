@@ -31,16 +31,16 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
     HttpModule,
-    RecipesModule
+    RecipesModule,
+    AppRoutingModule,
   ],
   providers: [
     ShoppingListService,
     RecipeService,
     DataStorageService,
     AuthService,
-    AuthGuardService
+    AuthGuardService,
   ],
   bootstrap: [AppComponent]
 })
