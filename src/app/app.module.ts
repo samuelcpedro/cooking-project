@@ -14,16 +14,13 @@ import { RecipeService } from './recipes/recipe.service';
 import { RecipesModule } from './recipes/recipes.module';
 import { DataStorageService } from './shared/data-storage.service';
 import { SharedModule } from './shared/shared.module';
-import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/shopping-list-edit.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingListEditComponent,
     SignupComponent,
     SigninComponent
   ],
@@ -32,6 +29,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     FormsModule,
     HttpModule,
     SharedModule,
+    ShoppingListModule,
     RecipesModule,
     AppRoutingModule,
   ],
