@@ -1,0 +1,48 @@
+Template Interaction & Production Builds
+Section 21, Lecture 291
+
+In the next lectures, we'll build our project for production.
+This will perform a couple of optimizations and with the current course project,
+it would also yield some tiny errors. Here's how to fix them!
+
+In the header.component.ts file (and its template file),
+you need to change the way you access the "is the user authenticated?" information in  the template.
+
+Instead of using
+
+    *ngIf="authService.isAuthenticated()"
+
+in the header.component.html file, you should replace that with a method call, like that:
+
+    *ngIf="isAuthenticated()"
+
+That of course means, that this method needs to be added to your header.component.ts file:
+
+    isAuthenticated() {
+        return this.authService.isAuthenticated();
+    }
+
+So you basically moved the service access from the template to the TypeScript code.
+
+Something similar has to be done for the recipe-edit.component.ts and .html files.
+
+Instead of using
+
+    *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index"
+
+you should use
+
+    *ngFor="let ingredientCtrl of getControls(); let i = index"
+
+in the template.
+
+Again, this getControls() method now needs to be added to the recipe-edit.component.ts file:
+
+    getControls() {
+        return (<FormArray>this.recipeForm.get('ingredients')).controls;
+    }
+
+The <FormArray> type conversion needs to be added here to avoid compilation errors from TypeScript's side.
+
+You find all these changes included in the optimizations-final.zip project snapshot
+(which is attached to the last lecture of this module).
