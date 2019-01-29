@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Recipe } from '../recipes/recipe.model';
@@ -15,9 +15,12 @@ export class DataStorageService {
     const token = this.authService.getIdToken();
     // const headers = new HttpHeaders().set('Autorization', 'Bearer sdfgsdfgsdfgsdf');
 
-    return this.httpClient.put('https://ng-recipe-book-samu.firebaseio.com/recipes.json?auth=' + token, this.recipeService.getRecipes(), {
+    // return this.httpClient
+    //   .put('https://ng-recipe-book-samu.firebaseio.com/recipes.json?auth=' + token, this.recipeService.getRecipes(), {
+    return this.httpClient.put('https://ng-recipe-book-samu.firebaseio.com/recipes.json', this.recipeService.getRecipes(), {
       // observe: 'events'
       observe: 'body',
+      params: new HttpParams().set('auth', token)
       // headers: headers
     });
   }
@@ -27,10 +30,11 @@ export class DataStorageService {
 
     // this.httpClient.get<Recipe[]>('https://ng-recipe-book-samu.firebaseio.com/recipes.json?auth=' + token)
     // this.httpClient.get('https://ng-recipe-book-samu.firebaseio.com/recipes.json?auth=' + token, {
-    this.httpClient.get<Recipe[]>('https://ng-recipe-book-samu.firebaseio.com/recipes.json?auth=' + token, {
+    this.httpClient.get<Recipe[]>('https://ng-recipe-book-samu.firebaseio.com/recipes.json', {
       // observe: 'response',
       observe: 'body',
-      responseType: 'json'
+      responseType: 'json',
+      params: new HttpParams().set('auth', token)
       // responseType: 'text'
       // responseType: 'blob' // for file
       // responseType: 'arrayBuffer' // for buffer some data
