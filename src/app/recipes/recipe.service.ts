@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 
 import { Ingredient } from './../shared/ingredient.model';
@@ -50,7 +49,7 @@ export class RecipeService {
       ]),
   ];
 
-  constructor(private slService: ShoppingListService, private http: Http) { }
+  constructor(private slService: ShoppingListService) { }
 
   /**
    * Get new recipes from the server
