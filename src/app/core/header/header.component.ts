@@ -1,5 +1,6 @@
 import 'rxjs/Rx';
 
+// import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 import { AuthService } from '../../auth/auth.service';
@@ -18,7 +19,16 @@ export class HeaderComponent {
   onSaveData() {
     this.dataStorageService.storeRecipes()
       .subscribe(
-        (response) => { console.log(response); },
+        // (response: HttpEvent<Object>) => {
+        (response) => {
+          console.log(response);
+          // console.log(response.type === HttpEventType.Sent);
+          // console.log(response.type === HttpEventType.User);
+          // console.log(response.type === HttpEventType.Response);
+          // console.log(response.type === HttpEventType.ResponseHeader);
+          // console.log(response.type === HttpEventType.DownloadProgress);
+          // console.log(response.type === HttpEventType.UploadProgress);
+        },
         (error) => { console.log(error); }
       );
   }
