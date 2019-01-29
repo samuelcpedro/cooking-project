@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Recipe } from '../recipes/recipe.model';
@@ -13,10 +13,12 @@ export class DataStorageService {
 
   storeRecipes() {
     const token = this.authService.getIdToken();
+    // const headers = new HttpHeaders().set('Autorization', 'Bearer sdfgsdfgsdfgsdf');
 
     return this.httpClient.put('https://ng-recipe-book-samu.firebaseio.com/recipes.json?auth=' + token, this.recipeService.getRecipes(), {
       // observe: 'events'
-      observe: 'body'
+      observe: 'body',
+      // headers: headers
     });
   }
 
