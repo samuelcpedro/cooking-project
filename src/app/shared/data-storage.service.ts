@@ -12,7 +12,7 @@ export class DataStorageService {
     private recipeService: RecipeService,    private authService: AuthService) { }
 
   storeRecipes() {
-    const token = this.authService.getIdToken();
+    // const token = this.authService.getIdToken();
     // const headers = new HttpHeaders().set('Autorization', 'Bearer sdfgsdfgsdfgsdf');
 
     // return this.httpClient
@@ -29,7 +29,7 @@ export class DataStorageService {
       this.recipeService.getRecipes(),
       {
         reportProgress: true,
-        params: new HttpParams().set('auth', token)
+        // params: new HttpParams().set('auth', token)
       });
 
       return this.httpClient.request(req);
@@ -44,7 +44,7 @@ export class DataStorageService {
       // observe: 'response',
       observe: 'body',
       responseType: 'json',
-      params: new HttpParams().set('auth', token)
+      // params: new HttpParams().set('auth', token)
       // responseType: 'text'
       // responseType: 'blob' // for file
       // responseType: 'arrayBuffer' // for buffer some data
