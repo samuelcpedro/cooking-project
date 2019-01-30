@@ -1,0 +1,59 @@
+Important: Angular 6, RxJS 6 and this section!
+Section 24, Lecture 314
+Using Angular 6 and therefore RxJS 6+?
+
+I recommend that you go through this module with rxjs-compat  installed.
+
+There'll be a video at the end of the module where we together update everything to work with RxJS 6 without rxjs-compat.
+But to prevent unnecessary issues with the import path adjustments and pipe(),
+it's easier to simply use rxjs-compat  by running npm install --save rxjs-compat  in the project folder.
+
+----------------------------
+
+[OPTIONAL] Still want to go without that package?
+
+You find detailed update instructions
+(Angular 5 => Angular 6) on this page: https://www.academind.com/learn/angular/snippets/angular-6-whats-new-angular-upgrade
+
+You'll have to adjust a couple of imports, operator names and use pipe() in this case.
+Refer to the "Understanding Observables" section of this course (section 13)
+to learn how you may update your code to use RxJS 6 WITHOUT rxjs-compat .
+
+Essentially, your imports have to change.
+
+For example,
+
+  import { Observable } from 'rxjs/Observable';
+
+becomes
+
+  import { Observable } from 'rxjs';
+
+Additionally, you use operators differently.
+
+  import 'rxjs/add/operator/map';
+  import 'rxjs/add/operator/switchMap';
+  myObservable.map(...).subscribe(...)
+becomes
+
+  import { map, switchMap } from 'rxjs/operators';
+  myObservable.pipe(map(...), switchMap(...)).subscribe(...);
+
+Last but not least, you'll encounter operators in this module, for which the name changed:
+
+do()  => tap()
+
+catch()  => catchError()
+
+An observable-creation method (throw ) was also renamed:
+
+  import { Observable } from 'rxjs/Observable';
+  import 'rxjs/add/observable/throw';
+  ...
+  myObservable.pipe(catchError(error => Observable.throw(error));
+
+becomes
+
+  import { throwError } from 'rxjs';
+  ...
+  myObservable.pipe(catchError(throwError(error));
