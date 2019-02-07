@@ -34,10 +34,10 @@ export class ShoppingListService {
    * and returns a copy of the array through the ingredientsChanged subject
    * @param ingredient Ingredient that we want insert
    */
-  addIngredient(ingredient: Ingredient) {
-    this.ingredients.push(ingredient);
-    this.ingredientsChanged.next(this.ingredients.slice());
-  }
+  // addIngredient(ingredient: Ingredient) {
+  //   this.ingredients.push(ingredient);
+  //   this.ingredientsChanged.next(this.ingredients.slice());
+  // }
 
   /**
    * Adds more then one Ingredient to the Ingredients array,

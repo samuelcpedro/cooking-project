@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+// import { Subscription } from 'rxjs/Subscription';
 
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from './shopping-list.service';
@@ -15,20 +15,20 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   shoppingListState: Observable<{ingredients: Ingredient[]}>;
 
-  private subscription: Subscription;
+  // private subscription: Subscription;
 
   constructor(private slService: ShoppingListService, private store: Store<{shoppingList: {ingredients: Ingredient[]}}>) { }
 
   ngOnInit() {
     // this.ingredients = this.slService.getIngredients();
-    this.shoppingListState = this.store.select('shoppingList');
     // this.subscription = this.slService.ingredientsChanged.subscribe((ingredients: Ingredient[]) => this.ingredients = ingredients);
+    this.shoppingListState = this.store.select('shoppingList');
   }
 
   ngOnDestroy(): void {
     // Called once, before the instance is destroyed.
     // Add 'implements OnDestroy' to the class.
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   onEditItem(index: number) {
