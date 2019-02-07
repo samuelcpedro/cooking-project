@@ -44,10 +44,10 @@ export class ShoppingListService {
    * and returns a copy of the array through the ingredientsChanged subject
    * @param ingredients Array of Ingredients from a recipes
    */
-  addIngredients(ingredients: Ingredient[]) {
-    this.ingredients.push(...ingredients);
-    this.ingredientsChanged.next(this.ingredients.slice());
-  }
+  // addIngredients(ingredients: Ingredient[]) {
+  //   this.ingredients.push(...ingredients);
+  //   this.ingredientsChanged.next(this.ingredients.slice());
+  // }
 
   /**
    * Updates one Ingredient to the Ingredients array, of the given index

@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
+// import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs/Subject';
 
 import { Ingredient } from './../shared/ingredient.model';
-import { ShoppingListService } from './../shopping-list/shopping-list.service';
+// import { ShoppingListService } from './../shopping-list/shopping-list.service';
+// import * as ShoppingListActions from './../shopping-list/store/shopping-list.actions';
 import { Recipe } from './recipe.model';
 
-@Injectable()
+// @Injectable()
 export class RecipeService {
 
   recipesChanged = new Subject<Recipe[]>();
@@ -49,7 +51,10 @@ export class RecipeService {
       ]),
   ];
 
-  constructor(private slService: ShoppingListService) { }
+  constructor(
+    // private slService: ShoppingListService,
+    // private store: Store<{shoppingList: {ingredients: Ingredient[]}}>
+    ) { }
 
   /**
    * Get new recipes from the server
@@ -89,9 +94,10 @@ export class RecipeService {
    * @param {Ingredient[]} ingredients
    * @memberof RecipeService
    */
-  addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.slService.addIngredients(ingredients);
-  }
+  // addIngredientsToShoppingList(ingredients: Ingredient[]) {
+  //   // this.slService.addIngredients(ingredients);
+  //   this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
+  // }
 
   /**
    *
