@@ -1,9 +1,27 @@
 import { Ingredient } from '../../shared/ingredient.model';
 import * as ShoppingListActions from './shopping-list.actions';
 
-const initialState = {
-  ingredients: [new Ingredient('Apples', 5), new Ingredient('Tomatos', 10)]
+// Because the app state is made of multiple pieces like the state
+// for a shopping list (export interface State)
+export interface AppState {
+  shoppingList: State;
+}
+
+export interface State {
+  ingredients: Ingredient[];
+  editedIngredient: null;
+  editedIngredientIndex: -1;
+}
+
+const initialState: State = {
+  ingredients: [
+    new Ingredient('Apples', 5),
+    new Ingredient('Tomatos', 10),
+  ],
+  editedIngredient: null,
+  editedIngredientIndex: -1
 };
+
 /**
  *
  *
