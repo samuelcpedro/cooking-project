@@ -14,10 +14,7 @@ export interface State {
 }
 
 const initialState: State = {
-  ingredients: [
-    new Ingredient('Apples', 5),
-    new Ingredient('Tomatos', 10),
-  ],
+  ingredients: [new Ingredient('Apples', 5), new Ingredient('Tomatos', 10)],
   editedIngredient: null,
   editedIngredientIndex: -1
 };
@@ -46,11 +43,10 @@ export function shoppingListReducer(
         ingredients: [...state.ingredients, ...action.payload]
       };
     case ShoppingListActions.UPDATE_INGREDIENT:
-
       /**
        * 2 - This is the ingredient i want to edit
        */
-      const ingredient = state.ingredients[action.payload.index];
+      const ingredient = state.ingredients[state.editedIngredientIndex];
 
       /**
        * 3 - The updated ingredient should be a javascript object
@@ -77,10 +73,11 @@ export function shoppingListReducer(
       /**
        * 5 - I will set ingredients at a specific position namely
        * action.payload.index = updatedIngredient
+       * state.editedIngredientIndex = updatedIngredient
        * so now I get an array with all the old elements
        * but one element was overwritten by the updated one.
        */
-      ingredients[action.payload.index] = updatedIngredient;
+      ingredients[state.editedIngredientIndex] = updatedIngredient;
 
       /**
        * 1 -I want to return an updated state using the old state
@@ -100,11 +97,22 @@ export function shoppingListReducer(
       // ingredients = (<Array<Ingredient>>state.ingredients).splice(action.payload, 1);
       // Max Solution
       ingredients = [...state.ingredients];
-      ingredients.splice(action.payload, 1);
+      ingredients.splice(state.editedIngredientIndex, 1);
       return {
         ...state,
         ingredients: ingredients
       };
+
+    case ShoppingListActions.START_EDIT:
+      // sdgas
+      const editedIngredient = { ...state.ingredients[action.payload] };
+
+      return {
+        ...state,
+        editedIngredient: editedIngredient,
+        editedIngredientIndex: action.payload
+      };
+
     default:
       return state;
   }
