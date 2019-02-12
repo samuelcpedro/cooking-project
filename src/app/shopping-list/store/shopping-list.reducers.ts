@@ -1,12 +1,6 @@
 import { Ingredient } from '../../shared/ingredient.model';
 import * as ShoppingListActions from './shopping-list.actions';
 
-// Because the app state is made of multiple pieces like the state
-// for a shopping list (export interface State)
-export interface AppState {
-  shoppingList: State;
-}
-
 export interface State {
   ingredients: Ingredient[];
   editedIngredient: null;

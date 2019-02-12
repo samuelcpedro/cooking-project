@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import * as fromShoppingList from '../../shopping-list/store/shopping-list.reducers';
+import * as fromApp from '../../store/app.reducers';
 import { Recipe } from '../recipe.model';
 import * as ShoppingListActions from './../../shopping-list/store/shopping-list.actions';
 import { RecipeService } from './../recipe.service';
 
+// import * as fromShoppingList from '../../shopping-list/store/shopping-list.reducers';
 // import { Ingredient } from './../../shared/ingredient.model';
 
 @Component({
@@ -22,7 +23,7 @@ id: number;
   constructor(private recipeService: RecipeService,
     private route: ActivatedRoute,
     private router: Router,
-    private store: Store<fromShoppingList.AppState>) { }
+    private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
     // const id = this.route.snapshot.params['id'];

@@ -1,13 +1,14 @@
-import * as ShoppingListActions from './store/shopping-list.actions';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-// import { Subscription } from 'rxjs/Subscription';
 
 import { Ingredient } from '../shared/ingredient.model';
-// import { ShoppingListService } from './shopping-list.service';
+import * as fromApp from '../store/app.reducers';
+import * as ShoppingListActions from './store/shopping-list.actions';
 
-import * as fromShoppingList from './store/shopping-list.reducers';
+// import { Subscription } from 'rxjs/Subscription';
+// import { ShoppingListService } from './shopping-list.service';
+// import * as fromShoppingList from './store/shopping-list.reducers';
 
 @Component({
   selector: 'app-shopping-list',
@@ -22,11 +23,12 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   constructor(
     // private slService: ShoppingListService,
-    private store: Store<fromShoppingList.AppState>) { }
+    private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
     // this.ingredients = this.slService.getIngredients();
     // this.subscription = this.slService.ingredientsChanged.subscribe((ingredients: Ingredient[]) => this.ingredients = ingredients);
+    // select the store in AppState
     this.shoppingListState = this.store.select('shoppingList');
   }
 
