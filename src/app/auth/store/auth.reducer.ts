@@ -10,5 +10,6 @@ const initialState: State = {
 };
 
 export function authReduce(state = initialState, action) {
-
+  
+  return state;
 }
