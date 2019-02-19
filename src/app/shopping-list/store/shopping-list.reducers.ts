@@ -3,8 +3,8 @@ import * as ShoppingListActions from './shopping-list.actions';
 
 export interface State {
   ingredients: Ingredient[];
-  editedIngredient: null;
-  editedIngredientIndex: -1;
+  editedIngredient: Ingredient;
+  editedIngredientIndex: number;
 }
 
 const initialState: State = {
